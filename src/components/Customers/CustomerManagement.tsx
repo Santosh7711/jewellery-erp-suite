@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { AddCustomerModal } from "./AddCustomerModal";
 import { 
   Search, 
   Plus, 
@@ -78,6 +79,7 @@ const sampleCustomers = [
 export function CustomerManagement() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const filteredCustomers = sampleCustomers.filter(customer => {
     const matchesSearch = customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,7 +106,10 @@ export function CustomerManagement() {
           <h2 className="text-2xl font-bold text-foreground">Customer Management</h2>
           <p className="text-muted-foreground">Manage your customer database and relationships</p>
         </div>
-        <Button className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
+        <Button 
+          className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+          onClick={() => setShowAddModal(true)}
+        >
           <Plus className="w-4 h-4" />
           Add Customer
         </Button>
@@ -276,6 +281,11 @@ export function CustomerManagement() {
           </div>
         </CardContent>
       </Card>
+
+      <AddCustomerModal 
+        open={showAddModal} 
+        onOpenChange={setShowAddModal} 
+      />
     </div>
   );
 }

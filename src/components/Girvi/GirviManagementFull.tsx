@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { AddGirviModal } from "./AddGirviModal";
 import { 
   Search, 
   Plus, 
@@ -119,6 +120,7 @@ export function GirviManagementFull() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [selectedAccount, setSelectedAccount] = useState<any>(null);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const statuses = ["All", "Active", "Closed", "Overdue"];
 
@@ -160,7 +162,10 @@ export function GirviManagementFull() {
           <h2 className="text-2xl font-bold text-foreground">Girvi Management</h2>
           <p className="text-muted-foreground">Manage pledge accounts and transactions</p>
         </div>
-        <Button className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
+        <Button 
+          className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+          onClick={() => setShowAddModal(true)}
+        >
           <Plus className="w-4 h-4" />
           New Girvi Account
         </Button>
@@ -445,6 +450,11 @@ export function GirviManagementFull() {
           )}
         </div>
       </div>
+
+      <AddGirviModal 
+        open={showAddModal} 
+        onOpenChange={setShowAddModal} 
+      />
     </div>
   );
 }

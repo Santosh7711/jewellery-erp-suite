@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { AddItemModal } from "./AddItemModal";
 import { 
   Search, 
   Plus, 
@@ -89,6 +90,7 @@ export function InventoryManagement() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const categories = ["All", "Rings", "Necklaces", "Earrings", "Bracelets", "Pendants"];
   const statuses = ["All", "In Stock", "Low Stock", "Out of Stock"];
@@ -132,7 +134,10 @@ export function InventoryManagement() {
           <h2 className="text-2xl font-bold text-foreground">Inventory Management</h2>
           <p className="text-muted-foreground">Track and manage your jewellery stock</p>
         </div>
-        <Button className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
+        <Button 
+          className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+          onClick={() => setShowAddModal(true)}
+        >
           <Plus className="w-4 h-4" />
           Add Item
         </Button>
@@ -345,6 +350,11 @@ export function InventoryManagement() {
           </Card>
         ))}
       </div>
+
+      <AddItemModal 
+        open={showAddModal} 
+        onOpenChange={setShowAddModal} 
+      />
     </div>
   );
 }
