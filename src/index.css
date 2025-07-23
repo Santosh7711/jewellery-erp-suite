@@ -9,32 +9,32 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 15% 20%;
+    --foreground: 240 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 15% 20%;
+    --card-foreground: 240 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 15% 20%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 178 70% 40%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 210 15% 20%;
+    --secondary: 270 20% 96%;
+    --secondary-foreground: 240 10% 15%;
 
-    --muted: 210 40% 95%;
-    --muted-foreground: 210 15% 50%;
+    --muted: 270 20% 95%;
+    --muted-foreground: 240 5% 50%;
 
-    --accent: 178 50% 95%;
-    --accent-foreground: 178 70% 40%;
+    --accent: 270 20% 96%;
+    --accent-foreground: 262 83% 58%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 178 70% 40%;
+    --border: 270 20% 88%;
+    --input: 270 20% 88%;
+    --ring: 262 83% 58%;
 
     --success: 142 70% 45%;
     --success-foreground: 0 0% 100%;
@@ -43,7 +43,10 @@ All colors MUST be HSL.
     --warning-foreground: 0 0% 100%;
 
     --gold: 45 100% 50%;
-    --gold-foreground: 210 15% 20%;
+    --gold-foreground: 240 10% 15%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 90% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270 20% 96%), hsl(260 30% 98%));
 
     --radius: 0.5rem;
 
@@ -65,33 +68,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 210 20% 5%;
-    --foreground: 210 15% 90%;
+    --background: 240 10% 5%;
+    --foreground: 270 20% 90%;
 
-    --card: 210 20% 8%;
-    --card-foreground: 210 15% 90%;
+    --card: 240 10% 8%;
+    --card-foreground: 270 20% 90%;
 
-    --popover: 210 20% 8%;
-    --popover-foreground: 210 15% 90%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 270 20% 90%;
 
-    --primary: 178 70% 50%;
-    --primary-foreground: 210 20% 5%;
+    --primary: 270 90% 65%;
+    --primary-foreground: 240 10% 5%;
 
-    --secondary: 210 20% 15%;
-    --secondary-foreground: 210 15% 90%;
+    --secondary: 240 10% 15%;
+    --secondary-foreground: 270 20% 90%;
 
-    --muted: 210 20% 12%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 240 10% 12%;
+    --muted-foreground: 270 20% 65%;
 
-    --accent: 210 20% 15%;
-    --accent-foreground: 178 70% 50%;
+    --accent: 240 10% 15%;
+    --accent-foreground: 270 90% 65%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
-    --ring: 178 70% 50%;
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 270 90% 65%;
 
     --success: 142 70% 45%;
     --success-foreground: 0 0% 100%;
@@ -100,7 +103,10 @@ All colors MUST be HSL.
     --warning-foreground: 0 0% 100%;
 
     --gold: 45 100% 60%;
-    --gold-foreground: 210 20% 5%;
+    --gold-foreground: 240 10% 5%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(270 90% 65%), hsl(280 95% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(240 10% 15%), hsl(250 15% 18%));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
