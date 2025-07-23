@@ -22,7 +22,8 @@ export function AddCustomerModal({ open, onOpenChange }: AddCustomerModalProps) 
     state: "",
     pincode: "",
     customerType: "",
-    notes: ""
+    notes: "",
+    gstin: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -48,7 +49,8 @@ export function AddCustomerModal({ open, onOpenChange }: AddCustomerModalProps) 
       state: "",
       pincode: "",
       customerType: "",
-      notes: ""
+      notes: "",
+      gstin: ""
     });
     onOpenChange(false);
   };
@@ -96,6 +98,16 @@ export function AddCustomerModal({ open, onOpenChange }: AddCustomerModalProps) 
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 placeholder="customer@email.com"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="gstin">GSTIN (for B2B)</Label>
+              <Input
+                id="gstin"
+                value={formData.gstin || ""}
+                onChange={(e) => handleInputChange("gstin", e.target.value)}
+                placeholder="22AAAAA0000A1Z5"
               />
             </div>
             

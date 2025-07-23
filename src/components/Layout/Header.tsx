@@ -13,7 +13,10 @@ import {
   Package,
   CreditCard,
   ShoppingCart,
-  TrendingUp
+  TrendingUp,
+  Gem,
+  IndianRupee,
+  FileText
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -53,6 +56,33 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
             Dashboard
           </Button>
           <Button 
+            variant={activeTab === "product-master" ? "default" : "ghost"} 
+            size="sm" 
+            className="gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => setActiveTab("product-master")}
+          >
+            <Gem className="w-4 h-4" />
+            Products
+          </Button>
+          <Button 
+            variant={activeTab === "gold-rate" ? "default" : "ghost"} 
+            size="sm" 
+            className="gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => setActiveTab("gold-rate")}
+          >
+            <IndianRupee className="w-4 h-4" />
+            Gold Rate
+          </Button>
+          <Button 
+            variant={activeTab === "billing" ? "default" : "ghost"} 
+            size="sm" 
+            className="gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => setActiveTab("billing")}
+          >
+            <FileText className="w-4 h-4" />
+            Billing
+          </Button>
+          <Button 
             variant={activeTab === "inventory" ? "default" : "ghost"} 
             size="sm" 
             className="gap-2 transition-all duration-300 hover:scale-105"
@@ -78,15 +108,6 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
           >
             <CreditCard className="w-4 h-4" />
             Girvi
-          </Button>
-          <Button 
-            variant={activeTab === "sales" ? "default" : "ghost"} 
-            size="sm" 
-            className="gap-2 transition-all duration-300 hover:scale-105"
-            onClick={() => setActiveTab("sales")}
-          >
-            <ShoppingCart className="w-4 h-4" />
-            Sales
           </Button>
           <Button 
             variant={activeTab === "reports" ? "default" : "ghost"} 
@@ -187,6 +208,30 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
               Dashboard
             </Button>
             <Button 
+              variant={activeTab === "product-master" ? "default" : "ghost"} 
+              className="justify-start gap-2"
+              onClick={() => setActiveTab("product-master")}
+            >
+              <Gem className="w-4 h-4" />
+              Products
+            </Button>
+            <Button 
+              variant={activeTab === "gold-rate" ? "default" : "ghost"} 
+              className="justify-start gap-2"
+              onClick={() => setActiveTab("gold-rate")}
+            >
+              <IndianRupee className="w-4 h-4" />
+              Gold Rate
+            </Button>
+            <Button 
+              variant={activeTab === "billing" ? "default" : "ghost"} 
+              className="justify-start gap-2"
+              onClick={() => setActiveTab("billing")}
+            >
+              <FileText className="w-4 h-4" />
+              Billing
+            </Button>
+            <Button 
               variant={activeTab === "inventory" ? "default" : "ghost"} 
               className="justify-start gap-2"
               onClick={() => setActiveTab("inventory")}
@@ -209,14 +254,6 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
             >
               <CreditCard className="w-4 h-4" />
               Girvi
-            </Button>
-            <Button 
-              variant={activeTab === "sales" ? "default" : "ghost"} 
-              className="justify-start gap-2"
-              onClick={() => setActiveTab("sales")}
-            >
-              <ShoppingCart className="w-4 h-4" />
-              Sales
             </Button>
             <Button 
               variant={activeTab === "reports" ? "default" : "ghost"} 

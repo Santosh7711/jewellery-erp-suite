@@ -8,6 +8,10 @@ import { SystemStatus } from "@/components/Dashboard/SystemStatus";
 import { CustomerManagement } from "@/components/Customers/CustomerManagement";
 import { InventoryManagement } from "@/components/Inventory/InventoryManagement";
 import { GirviManagementFull } from "@/components/Girvi/GirviManagementFull";
+import { ProductMasterManagement } from "@/components/ProductMaster/ProductMasterManagement";
+import { GoldRateManagement } from "@/components/GoldRate/GoldRateManagement";
+import { BillingModule } from "@/components/Billing/BillingModule";
+import { ReportsModule } from "@/components/Reports/ReportsModule";
 import { 
   IndianRupee, 
   Users, 
@@ -174,6 +178,24 @@ const Index = () => {
             <CustomerManagement />
           </main>
         );
+      case "product-master":
+        return (
+          <main className="p-6">
+            <ProductMasterManagement />
+          </main>
+        );
+      case "gold-rate":
+        return (
+          <main className="p-6">
+            <GoldRateManagement />
+          </main>
+        );
+      case "billing":
+        return (
+          <main className="p-6">
+            <BillingModule />
+          </main>
+        );
       case "inventory":
         return (
           <main className="p-6">
@@ -189,19 +211,13 @@ const Index = () => {
       case "sales":
         return (
           <main className="p-6">
-            <div className="text-center py-20">
-              <h2 className="text-2xl font-bold text-foreground mb-4">Sales Management</h2>
-              <p className="text-muted-foreground">Sales module coming soon...</p>
-            </div>
+            <BillingModule />
           </main>
         );
       case "reports":
         return (
           <main className="p-6">
-            <div className="text-center py-20">
-              <h2 className="text-2xl font-bold text-foreground mb-4">Reports & Analytics</h2>
-              <p className="text-muted-foreground">Reports module coming soon...</p>
-            </div>
+            <ReportsModule />
           </main>
         );
       default:
