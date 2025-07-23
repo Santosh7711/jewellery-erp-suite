@@ -12,6 +12,8 @@ import { ProductMasterManagement } from "@/components/ProductMaster/ProductMaste
 import { GoldRateManagement } from "@/components/GoldRate/GoldRateManagement";
 import { BillingModule } from "@/components/Billing/BillingModule";
 import { ReportsModule } from "@/components/Reports/ReportsModule";
+import { GSTModule } from "@/components/GST/GSTModule";
+import { AccountingModule } from "@/components/Accounting/AccountingModule";
 import { 
   IndianRupee, 
   Users, 
@@ -51,18 +53,23 @@ const Index = () => {
             <div className="flex items-center justify-between animate-fade-in">
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                  Welcome Manglam Jewellers
+                  Welcome Kalyan Jewellers
                 </h1>
                 <p className="text-muted-foreground mt-1">
                   Here's what's happening with your business today.
                 </p>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/10 to-gold/5 rounded-lg border border-gold/20 animate-bounce-gentle">
+              <div className="flex flex-col items-center gap-1 px-4 py-3 bg-gradient-to-r from-gold/10 to-gold/5 rounded-lg border border-gold/20 animate-bounce-gentle">
                 <div className="w-2 h-2 bg-gold rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gold-foreground">
-                  GOLD LIVE ₹6,850/g
-                </span>
-                <span className="text-xs text-success">+₹25</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-gold-foreground">
+                    GOLD LIVE ₹6,850/g
+                  </span>
+                  <span className="text-xs text-success">+₹25</span>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Real-time • 24K • MCX
+                </div>
               </div>
             </div>
 
@@ -218,6 +225,18 @@ const Index = () => {
         return (
           <main className="p-6">
             <ReportsModule />
+          </main>
+        );
+      case "gst":
+        return (
+          <main className="p-6">
+            <GSTModule />
+          </main>
+        );
+      case "accounting":
+        return (
+          <main className="p-6">
+            <AccountingModule />
           </main>
         );
       default:

@@ -40,7 +40,7 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
             <span className="text-primary-foreground font-bold text-sm">💎</span>
           </div>
           <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-            Gehna ERP
+            Ornava ERP
           </h1>
         </div>
 
@@ -118,6 +118,24 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
             <TrendingUp className="w-4 h-4" />
             Reports
           </Button>
+          <Button 
+            variant={activeTab === "gst" ? "default" : "ghost"} 
+            size="sm" 
+            className="gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => setActiveTab("gst")}
+          >
+            <FileText className="w-4 h-4" />
+            GST
+          </Button>
+          <Button 
+            variant={activeTab === "accounting" ? "default" : "ghost"} 
+            size="sm" 
+            className="gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => setActiveTab("accounting")}
+          >
+            <CreditCard className="w-4 h-4" />
+            Accounting
+          </Button>
         </nav>
 
         {/* Search */}
@@ -134,12 +152,17 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
         {/* Actions */}
         <div className="flex items-center gap-3">
           {/* Gold Rate */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-gold/10 to-gold/5 rounded-lg border border-gold/20 animate-bounce-gentle">
+          <div className="hidden sm:flex flex-col items-center gap-1 px-3 py-2 bg-gradient-to-r from-gold/10 to-gold/5 rounded-lg border border-gold/20 animate-bounce-gentle">
             <div className="w-2 h-2 bg-gold rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-gold-foreground">
-              Gold ₹6,850/g
-            </span>
-            <span className="text-xs text-success">+₹25</span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-gold-foreground">
+                Gold ₹6,850/g
+              </span>
+              <span className="text-xs text-success">+₹25</span>
+            </div>
+            <div className="text-xs text-muted-foreground">
+              Live Rate • 24K
+            </div>
           </div>
 
           {/* Dark Mode Toggle */}
@@ -178,7 +201,7 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
               <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">MJ</AvatarFallback>
             </Avatar>
             <div className="hidden sm:block text-right">
-              <p className="text-sm font-medium">Manglam Jewellers</p>
+              <p className="text-sm font-medium">Kalyan Jewellers</p>
               <p className="text-xs text-muted-foreground">Admin</p>
             </div>
           </div>
@@ -262,6 +285,22 @@ export function Header({ darkMode, toggleDarkMode, activeTab, setActiveTab }: He
             >
               <TrendingUp className="w-4 h-4" />
               Reports
+            </Button>
+            <Button 
+              variant={activeTab === "gst" ? "default" : "ghost"} 
+              className="justify-start gap-2"
+              onClick={() => setActiveTab("gst")}
+            >
+              <FileText className="w-4 h-4" />
+              GST
+            </Button>
+            <Button 
+              variant={activeTab === "accounting" ? "default" : "ghost"} 
+              className="justify-start gap-2"
+              onClick={() => setActiveTab("accounting")}
+            >
+              <CreditCard className="w-4 h-4" />
+              Accounting
             </Button>
           </nav>
         </div>

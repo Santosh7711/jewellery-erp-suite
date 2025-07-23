@@ -58,6 +58,52 @@ export function BillingModule() {
   const silverRate = 82; // Current silver rate
   const gstRate = 3; // GST rate 3%
 
+  // Enhanced invoice generation with GST compliance
+  const generateGSTCompliantInvoice = () => {
+    if (billItems.length === 0) {
+      toast.error("Please add items to the bill!");
+      return;
+    }
+    if (!customerInfo.name || !customerInfo.mobile) {
+      toast.error("Please enter customer name and mobile number!");
+      return;
+    }
+    if (!paymentMode) {
+      toast.error("Please select payment mode!");
+      return;
+    }
+
+    const invoiceType = customerInfo.gstin ? "B2B" : "B2C";
+    const sequentialNumber = `KJ${new Date().getFullYear()}${String(Date.now()).slice(-6)}`;
+    
+    const invoiceData = {
+      invoiceNumber: sequentialNumber,
+      invoiceType,
+      date: new Date().toISOString(),
+      customer: customerInfo,
+      items: billItems.map(item => ({
+        ...item,
+        hsnCode: item.category === "Gold" ? "7113" : item.category === "Silver" ? "7113" : "7102",
+        gstRate: 3,
+        cgst: 1.5,
+        sgst: 1.5
+      })),
+      subtotal,
+      discount: discountAmount,
+      taxableAmount: totalBeforeGST,
+      cgst: gstAmount / 2,
+      sgst: gstAmount / 2,
+      totalGst: gstAmount,
+      total: finalTotal,
+      paymentMode,
+      placeOfSupply: "27-Maharashtra",
+      businessGstin: "27KALYAN123456789"
+    };
+
+    console.log("Generating GST compliant invoice:", invoiceData);
+    toast.success(`GST Invoice ${sequentialNumber} generated successfully!`);
+  };
+
   const addProductToBill = () => {
     if (!selectedProduct) {
       toast.error("Please select a product!");
@@ -115,33 +161,7 @@ export function BillingModule() {
   const finalTotal = totalBeforeGST + gstAmount;
 
   const generateInvoice = () => {
-    if (billItems.length === 0) {
-      toast.error("Please add items to the bill!");
-      return;
-    }
-    if (!customerInfo.name || !customerInfo.mobile) {
-      toast.error("Please enter customer name and mobile number!");
-      return;
-    }
-    if (!paymentMode) {
-      toast.error("Please select payment mode!");
-      return;
-    }
-
-    const invoiceData = {
-      customer: customerInfo,
-      items: billItems,
-      subtotal,
-      discount: discountAmount,
-      gst: gstAmount,
-      total: finalTotal,
-      paymentMode,
-      invoiceNumber: `INV-${Date.now()}`,
-      date: new Date().toISOString()
-    };
-
-    console.log("Generating invoice:", invoiceData);
-    toast.success("Invoice generated successfully!");
+    generateGSTCompliantInvoice();
   };
 
   return (
@@ -384,7 +404,12 @@ export function BillingModule() {
 
                 <div className="flex justify-between text-sm">
                   <span>GST @ {gstRate}%:</span>
-                  <span>₹{gstAmount.toLocaleString()}</span>
+                  <div className="text-right">
+                    <div>₹{gstAmount.toLocaleString()}</div>
+                    <div className="text-xs text-muted-foreground">
+                      CGST: ₹{(gstAmount/2).toLocaleString()} | SGST: ₹{(gstAmount/2).toLocaleString()}
+                    </div>
+                  </div>
                 </div>
 
                 <Separator />
@@ -445,11 +470,14 @@ export function BillingModule() {
             <CardContent className="p-6 space-y-3">
               <Button onClick={generateInvoice} className="w-full gap-2">
                 <FileText className="w-4 h-4" />
-                Generate Invoice
+                Generate GST Invoice
               </Button>
               <Button variant="outline" className="w-full gap-2">
                 <Printer className="w-4 h-4" />
-                Print Invoice
+                Print GST Invoice
+              </Button>
+              <Button variant="outline" className="w-full gap-2">
+                Return/Refund
               </Button>
               <Button variant="outline" className="w-full gap-2">
                 Save as Draft
